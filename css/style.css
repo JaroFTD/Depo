@@ -231,7 +231,6 @@ body.lock {
   -webkit-transition: 0.3s;
   transition: 0.3s;
   text-align: center;
-  white-space: nowrap;
 }
 @media (any-hover: hover) {
   .btn:hover {
@@ -561,14 +560,35 @@ body.lock {
     right: -100%;
     top: 0;
     background-color: #fff;
-    padding: 70px 24px 0px 24px;
+    padding: 100px 24px 0px 24px;
     overflow: auto;
     z-index: 2;
     -webkit-transition: 0.4s;
     transition: 0.4s;
     z-index: 50;
   }
+  .menu__body::after {
+    content: "";
+    position: fixed;
+    width: 60%;
+    height: 88px;
+    right: -100%;
+    top: 0;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+    background-color: #fff;
+  }
+}
+@media (max-width: 991.98px) and (max-width: 479.98px) {
+  .menu__body::after {
+    height: 68px;
+  }
+}
+@media (max-width: 991.98px) {
   .menu__body.active {
+    right: 0px;
+  }
+  .menu__body.active::after {
     right: 0px;
   }
 }
@@ -683,6 +703,9 @@ body.lock {
   .right-header__lang-desktop {
     display: none;
   }
+}
+.right-header__btn {
+  white-space: nowrap;
 }
 @media (max-width: 991.98px) {
   .right-header__btn:not(:last-child) {
@@ -1344,6 +1367,11 @@ body.lock {
     padding: 8px 6.5px 4px;
   }
 }
+.body-tabs__form {
+  position: relative;
+  z-index: 2;
+}
+
 .form-tabs {
   text-align: center;
   position: relative;
@@ -1395,6 +1423,8 @@ body.lock {
 }
 .form-tabs__box {
   position: relative;
+  padding: 25px;
+  padding-left: 0;
   width: 100%;
   margin-left: 15px;
 }
@@ -1418,10 +1448,15 @@ body.lock {
   -webkit-transform: rotate(-180deg) translateY(50%);
           transform: rotate(-180deg) translateY(50%);
 }
+@media (max-width: 1300px) {
+  .form-tabs__box {
+    padding: 17px 25px 17px 0;
+  }
+}
 .form-tabs__title {
   position: relative;
-  padding: 25px;
   margin-right: 7px;
+  padding-left: 25px;
   color: #000000;
   font-weight: 700;
   font-size: 12px;
@@ -1443,13 +1478,18 @@ body.lock {
   transition: transform 0.3s ease 0s, -webkit-transform 0.3s ease 0s;
   background: url("../img/main-block/icons/arrow-form.svg") no-repeat;
 }
+.form-tabs__title.form-tabs__item-bitcoin::after {
+  top: -2px;
+}
+.form-tabs__title.form-tabs__item-checkcoin::after {
+  top: -2px;
+}
+.form-tabs__title.form-tabs__item-ethereum::after {
+  top: -2px;
+}
 @media (max-width: 1300px) {
   .form-tabs__title {
     margin-right: 0px;
-    padding: 17px 25px 17px 25px;
-  }
-  .form-tabs__title.form-tabs__item-bitcoin::after, .form-tabs__title.form-tabs__item-checkcoin::after, .form-tabs__title.form-tabs__item-ethereum::after {
-    top: 16px;
   }
 }
 .form-tabs__list {
@@ -1460,6 +1500,7 @@ body.lock {
   pointer-events: none;
   position: absolute;
   left: 0;
+  top: 45px;
   background-color: #fff;
   width: 100%;
   height: 121px;
@@ -1516,6 +1557,8 @@ body.lock {
   background: url("../img/main-block/icons/eth.svg") 0px 0px/cover no-repeat;
 }
 .form-tabs__btn {
+  position: relative;
+  z-index: 2;
   font-family: "Inter";
 }
 @media (max-width: 630px) {
@@ -1791,9 +1834,6 @@ body.lock {
   font-size: 24px;
   line-height: 133.333333%; /* 32px/24px */
   color: #000;
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 auto;
-          flex: 1 1 auto;
 }
 @media (max-width: 570px) {
   .howitworks__label {
